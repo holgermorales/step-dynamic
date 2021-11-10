@@ -1,0 +1,25 @@
+<button mat-raised-button (click)="addItem()" color="primary">
+  add item
+</button>
+<form [formGroup]="formGroup">
+  <mat-horizontal-stepper linear formArrayName="form">
+    <mat-step [formGroupName]="i" *ngFor="let tab of tabs; let i = index">
+      <ng-template matStepLabel>{{tab}}</ng-template>
+
+      <div [ngSwitch]="i">
+        <div *ngSwitchCase="0">
+          <mat-form-field>
+            <input matInput placeholder="Name" formControlName="name" required>
+          </mat-form-field>
+        </div>
+        <div *ngSwitchCase="1">
+          I am a developer
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</form>
